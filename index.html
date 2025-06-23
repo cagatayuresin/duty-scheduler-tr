@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev Atama Takvimi</title>
+    <!-- Material Design Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/material-icons@1.13.14/iconfont/material-icons.min.css" rel="stylesheet">
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.css">
+    <!-- PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="material-icons" style="vertical-align: middle; margin-right: 8px;">event</i>Nobet Atama Takvimi</h1>
+            <div class="controls">
+                <button class="btn" onclick="autoAssignDuties()">
+                    <i class="material-icons">auto_fix_high</i>
+                    Otomatik Ata
+                </button>
+                <button class="btn" onclick="clearAllAssignments()">
+                    <i class="material-icons">clear_all</i>
+                    Tümünü Temizle
+                </button>
+                <button class="btn" onclick="exportToPDF('month')">
+                    <i class="material-icons">picture_as_pdf</i>
+                    Aylık PDF
+                </button>
+                <button class="btn" onclick="exportToPDF('quarter')">
+                    <i class="material-icons">picture_as_pdf</i>
+                    3 Aylık PDF
+                </button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>
+                    <i class="material-icons">people</i>
+                    Kişiler
+                </h3>
+                <div class="person-input">
+                    <input type="text" id="personName" placeholder="Kişi adını girin..." onkeypress="handlePersonInput(event)">
+                    <button class="add-btn" onclick="addPerson()">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+                <div class="people-list" id="peopleList"></div>
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="month-nav">
+                        <button class="nav-btn" onclick="changeMonth(-1)">
+                            <i class="material-icons">chevron_left</i>
+                        </button>
+                        <div class="current-month" id="currentMonth"></div>
+                        <button class="nav-btn" onclick="changeMonth(1)">
+                            <i class="material-icons">chevron_right</i>
+                        </button>
+                    </div>
+                </div>
+                <div class="calendar" id="calendar"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
